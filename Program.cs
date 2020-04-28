@@ -1,12 +1,14 @@
 ﻿using System;
-
+using System.Collections;
+using System.Linq;
+using System.Text;
 namespace Rock_Paper_Scissors
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            string inputPlayer, inputCPU;
+            string inputPlayer;
             int randomInt;
             int scorePlayer = 0;
             int scoreCPU = 0;
@@ -14,95 +16,115 @@ namespace Rock_Paper_Scissors
 
             while (playAgain)
             {
-
-            }
-            while (scorePlayer < 3 && scoreCPU < 3)
-            {
-                Console.WriteLine("Do you want to play Rock Paper Scissors?");
-                inputPlayer = Console.ReadLine();
-                inputCPU = inputPlayer.ToUpper();
-
-                Random rnd = new Random();
-
-                randomInt = rnd.Next(1, 4);
-
-                switch (randomInt)
+                while (scorePlayer <= 4 && scoreCPU <= 4)
                 {
-                    case 1:
-                        inputCPU = "rock";
-                        Console.WriteLine("Computer chose rock");
-                        if (inputPlayer == "rock")
-                        {
-                            Console.WriteLine("Tie!!!\n\n");
-                        }
-                        else if (inputPlayer == "paper");
-                        {
-                            Console.WriteLine("Player wins!!!\n\n");
+
+                    Console.WriteLine(" 1 Rock 2 Paper 3 scissors. Please press enter after picking. Who ever gets  " +
+                    " five points" +
+                    " wins");
+                    inputPlayer = Console.ReadLine();
+
+
+                    inputPlayer = inputPlayer.ToLower();
+
+
+                    Random rnd = new Random();
+                    randomInt = rnd.Next(1, 3);
+
+                    switch (randomInt)
+                    {
+                        case 1: // Rock
+
+
+                            if (inputPlayer == "Rock")
+                            {
+                                Console.WriteLine("We have a Tie!!!\n\n");
+                            }
+                            else if (inputPlayer == "Paper")
+                            {
+                                Console.WriteLine("Player wins!!!\n\n");
                                 scorePlayer++;
-                        
-                       
-                        else if (inputPlayer == "rock")
-                        {
-                            Console.WriteLine("Tie\n\n");
-                        }
-                        break;
-                    case 2:
-                        inputCPU = "Paper";
-
-                        Console.WriteLine("Computer chose paper");
-                        if (inputPlayer == "paper")
-                        {
-                            Console.WriteLine("Tie!!!\n\n");
-                        }
-                        else if (inputPlayer == "rock")
-                        {
-                            Console.WriteLine("cpu wins!!!\n\n");
-                            scorePlayer++;
-                        }
-                        else if (inputPlayer == "scissors")
-                        {
-                            Console.WriteLine("player wins\n\n");
-                            scoreCPU++;
-
-                        }
-                        break;
+                            }
+                            else // Scissors
+                            {
+                                Console.WriteLine("Computer wins!!!\n\n");
+                                scoreCPU++;
+                            }
 
 
-                    case 3:
-                        inputCPU = "scissors";
-                        Console.WriteLine("Computer chose scissors");
-                        if (inputPlayer == "scissors")
-                        {
-                            Console.WriteLine("Tie!!!");
+                            break;
 
-                        }
-                        else if (inputPlayer == "rock")
-                        {
-                            Console.WriteLine("Player wins\n\n");
-                            scorePlayer++;
-                        }
-                        else if (inputPlayer == "paper")
-                        {
-                            Console.WriteLine("CPU wins!!!\n\n")
-                        }
-                        break;
-                    default:
-                        Console.WriteLine("invalid");
-                        break;
+                        case 2: // Paper
+                            Console.WriteLine("computer chose Paper");
+                            if (inputPlayer == "paper")
+                            {
+                                Console.WriteLine("We have a Tie\n\n");
+                            }
+                            else if (inputPlayer == "Scissors")
+                            {
+                                Console.WriteLine("player wins the cheese!!!\n\n");
+                                scorePlayer++;
+                            }
+
+                            else if (inputPlayer == "Paper")
+
+                                Console.WriteLine("We have a bow TIE\n\n");
+
+                            break;
+
+
+                        case 3: //Scissors
+                            Console.WriteLine("computer chose Scissors");
+                            if (inputPlayer == "Scissors")
+
+                            {
+                                Console.WriteLine("We have a sad tie\n\n");
+                            }
+                            else if (inputPlayer == "Rock")
+
+                            {
+                                Console.WriteLine("you have crushed me\n\n");
+                                scorePlayer++;
+
+
+                            }
+                            else if (inputPlayer == "Scissors")
+
+                                Console.WriteLine("We got nowhere with this Draw");
+
+
+
+                            break;
+                    }
+
+                    Console.WriteLine("Player: {1} \n CPU: {1}", scorePlayer, scoreCPU);
+                }
+
+                if (scorePlayer == 5)
+                {
+                    Console.WriteLine("Winner Winner Chicken DINNER");
+
+                    Console.WriteLine("CPU wins You are a loser!!");
+
+
+                }
+                else
+                {
+
+
+
+                    Console.WriteLine("Do you wanna play again?(y/n)");
+                    string loop = Console.ReadLine();
+
+                    playAgain = loop.ToUpper() == "y";
+                    // (loop == "y");
+                    // playAgain = true;
+
+                    //if (loop == "n");
+                    // playAgain = false;
+
                 }
             }
-            if (scorePlayer == 3)
-            {
-                Console.WriteLine("Player won");
-            }
-            else if (scoreCPU == 3)
-
-                Console.WriteLine("CPU won");
         }
-        else
-        {
-        }
-        Console.WriteLine("Play Again?");
-
     }
 }

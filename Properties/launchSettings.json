@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Rock_Paper_Scissors": {
+      "commandName": "Project",
+      "sqlDebugging": true,
+      "nativeDebugging": true
+    }
+  }
+}
